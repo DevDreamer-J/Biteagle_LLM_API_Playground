@@ -1,0 +1,20 @@
+# LLM API Playground 依赖清单（版本锁定自 python14 环境实测）
+# 安装方式：python -m pip install -r requirements.txt
+# 说明：torch 由 sentence-transformers 自动安装（如需 GPU 版请按本机 CUDA 版本另行指定源）
+
+# API 调用：01-04、06 用 openai SDK；07 用 openai + dashscope 双 SDK
+openai==3.19.2
+dashscope==2.0.1
+
+# 结构化输出校验（03）
+pydantic==2.14.1
+
+# .env 配置加载（01-04、06、07）
+python-dotenv==1.2.3
+
+# 本地 Embedding 模型（05；numpy 用于向量相似度计算）
+sentence-transformers==6.2.0
+numpy==2.5.3
+
+# 测试（tests/）
+pytest==9.1.1
