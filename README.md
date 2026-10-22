@@ -20,7 +20,7 @@ llm-api-playground/
 ├── requirements.txt             # 依赖清单（版本锁定）
 ├── .env / .env.example          # 配置文件（.env 已被 .gitignore 忽略，不入库）
 ├── data/calls.jsonl             # 调用日志（运行 06 后生成）
-└── embedding/bge-small-zh-v1.5/ # 本地 Embedding 模型（BAAI，离线加载）
+└── embedding/bge-small-zh-v1.5/ # 本地 Embedding 模型（BAAI/bge-small-zh-v1.5，不入库，按环境准备下载）
 ```
 
 ## 环境准备
@@ -43,6 +43,15 @@ llm-api-playground/
    OpenAI_BASE_URL=https://xxx/compatible-mode/v1
    DASHSCOPE_BASE_URL=https://dashscope.aliyuncs.com/api/v1
    ```
+
+4. 下载本地 Embedding 模型（05、08 与 tests 运行时需要；模型二进制不入库，需自行下载约 180MB）：
+
+   ```bash
+   python -m pip install modelscope
+   python -c "from modelscope import snapshot_download; snapshot_download('BAAI/bge-small-zh-v1.5', local_dir='embedding/bge-small-zh-v1.5')"
+   ```
+
+   脚本以相对路径 `embedding/bge-small-zh-v1.5/` 离线加载，运行时无需联网、无需 API Key。
 
 ## 运行说明
 
